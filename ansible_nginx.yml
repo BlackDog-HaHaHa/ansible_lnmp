@@ -1,0 +1,20 @@
+---
+  - hosts: 127.0.0.1
+    remote_user: root
+    vars:
+      user: www
+      group: www
+      nginx_use_fastcgi_cache: true
+      wwwroot: /www/wwwroot/
+      web_port: 80
+      web_name: www.baidu.com
+      web_pem: 001.pem
+      web_key: 001.key
+      nginx_use_http: true
+      nginx_use_https: false
+
+    tasks:
+      - name: template config
+        template: src=nginx.conf.j2 dest=/root/nginx.conf
+      - name: temlate 2
+        template: src=web.conf.j2 dest=/root/web.conf
